@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ Chatbot</title>
+    <style>
+        /* Chat container */
+        .container {
+          border: 2px solid #dedede;
+          background-color: #f1f1f1;
+          border-radius: 5px;
+          padding: 10px;
+          margin: 10px 0;
+        }
+        
+        /* User message */
+        .container-right {
+          border-color: #ccc;
+          background-color: #e2e2e2;
+          margin-left: 50%;
+        }
+        
+        /* Bot message */
+        .container-left {
+          border-color: #ccc;
+          background-color: #fff;
+        }
+        
+        /* Clear floats */
+        .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ Chatbot</h1>
+    <form method="POST">
+        <input type="text" name="question" placeholder="Enter your question" required>
+        <input type="submit" value="Ask">
+    </form>
+    {% for message in messages %}
+        {% if message.right %}
+            <div class="container container-right clearfix">
+                <p>{{ message.text }}</p>
+            </div>
+        {% else %}
+            <div class="container container-left clearfix">
+                <p>{{ message.text }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

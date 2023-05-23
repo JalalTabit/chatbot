@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nationwide Underwriter Chatbot</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #ffa64d;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            padding: 20px;
+            overflow-y: auto;
+            height: 550px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .user-message .message-bubble {
+            background-color: #2980b9;
+            color: #fff;
+        }
+
+        .bot-message .message-bubble {
+            background-color: #eaeaea;
+            color: #333;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+
+        .chat-input {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .chat-input input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>FAQ Chatbot</h1>
+        </div>
+        <div class="chat-messages">
+            {% for message in messages %}
+                <div class="message {% if message.role == 'user' %}user-message{% else %}bot-message{% endif %}">
+                    <div class="message-bubble">{{ message.content }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="chat-input">
+            <form method="POST" action="">
+                <input type="text" name="question" placeholder="Enter your question" required>
+                <input type="submit" value="Ask">
+            </form>
+        </div>
+    </div>
+	<footer style="text-align: center; padding: 20px;">
+        <p>&copy; 2023 ATG Title &bull; All Rights Reserved</p>
+    </footer>
+</body>
+</html>
